@@ -5,3 +5,12 @@
     width: 80%;
     margin: auto;
 }
+
+.Post-heading {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    width: fit-content;
+    margin: auto;
+    margin-top: 16px;
+}
