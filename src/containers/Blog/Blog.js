@@ -39,7 +39,7 @@ class Blog extends Component {
 
     checkPost = (posts) => {
         return !posts ? null : posts.map(post => {
-            return <Post key={post.id} title={post.title} author={post.author} clicked={(id) => this.postClickedHandler(id)}/>;
+            return <Post key={post.id} title={post.title} author={post.author} clicked={() => this.postClickedHandler(post.id)}/>;
         });
     }
     
