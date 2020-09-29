@@ -204,6 +204,44 @@ h1 {
   }
 }
 
+.main-navigation-toggled:checked {
+    ~ li .icon--menu-toggle {    
+      .icon-group {
+        transform: translateX(100%);
+      }
+    }
+    
+    ~ .main-content {
+      transform: translateX(10%);
+    }
+    
+    ~ .main-navigation {
+      transition-duration: 0s;
+      transform: translateX(0);
+      
+      &:after {
+        animation: nav-bg var(--nav-duration) var(--ease) forwards;
+      }
+      
+      li:after {
+        animation: nav-line var(--duration) var(--ease) forwards;
+      }
+      
+      a {
+        animation: link-appear calc(var(--duration) * 1.5) var(--ease) forwards;
+      }
+      
+      @for $i from 1 through 4 {
+        li:nth-child(#{$i}) {
+          &:after, a {
+            animation-delay: calc((var(--duration) / 2) * #{$i} * 0.125);
+          }
+        }
+      }
+    }
+  }
+  
+
 @keyframes nav-bg {
   from { transform: translateX(-100%) skewX(-15deg) }
   to { transform: translateX(0) }

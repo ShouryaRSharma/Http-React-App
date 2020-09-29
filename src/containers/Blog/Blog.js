@@ -3,7 +3,7 @@ import FullPost from './FullPost/FullPost';
 import NewPost from './NewPost/NewPost';
 import Nav from '../Navbar/Navbar';
 import Posts from './Posts/Posts';
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 
 import './Blog.scss';
 
@@ -22,12 +22,12 @@ class Blog extends Component {
                 <header className="toolbar">
                     <Nav />
                     <nav className="main-navigation">
-                        <ul class="nav-items">
-                            <li className="nav-item">
-                                <a className="nav-link" href="/">Home</a>
+                        <ul className="nav-items">
+                            <li className="nav-item" type="checkbox">
+                                <Link to="/" className="nav-link">Home</Link>
                             </li>
-                            <li>
-                                <a className="nav-link" href="/new-post">New Post</a>
+                            <li className="nav-item" type="checkbox">
+                                <Link to="/new-post" className="nav-link">New Post</Link>
                             </li>
                         </ul>
                     </nav>
