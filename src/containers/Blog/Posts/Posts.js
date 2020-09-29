@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import axios from '../../../axios';
 
 import Post from '../../../components/Post/Post';
@@ -44,9 +44,14 @@ class Posts extends Component {
         const posts = this.state.posts;
 
         return (
-            <section className="Posts">
-                {this.checkPost(posts)}
-            </section>
+            <Fragment>
+                <section className="Post-heading">
+                        <h2 className="mx-2 my-1">Posts</h2>
+                </section>
+                <section className="Posts">
+                    {this.checkPost(posts)}
+                </section>
+            </Fragment>
         );
     }
 }
