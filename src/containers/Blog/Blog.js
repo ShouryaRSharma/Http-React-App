@@ -24,7 +24,7 @@ class Blog extends Component {
                     <nav className="main-navigation">
                         <ul className="nav-items">
                             <li className="nav-item" type="checkbox">
-                                <NavLink to="/" className="nav-link">Home</NavLink>
+                                <NavLink to="/" exact className="nav-link">Home</NavLink>
                             </li>
                             <li className="nav-item" type="checkbox">
                                 <NavLink to="/new-post" className="nav-link">New Post</NavLink>
@@ -33,7 +33,8 @@ class Blog extends Component {
                     </nav>
                 </header>
                 <Route path="/" exact component={Posts}/>
-                <Route path="/new-post" exact component={NewPost}/>
+                <Route path="/new-post" component={NewPost}/>
+                <Route path="/:id" exact component={FullPost} />
                 {/* <Posts /> */}
                 {/* <section>
                     <FullPost id={this.state.selectedPostId}/>

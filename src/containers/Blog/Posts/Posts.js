@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import axios from '../../../axios';
+import { Link } from 'react-router-dom';
 
 import Post from '../../../components/Post/Post';
 
@@ -36,11 +37,14 @@ class Posts extends Component {
 
     checkPost = (posts) => {
         return !posts ? null : posts.map(post => {
-            return <Post 
-            key={post.id} 
-            title={post.title} 
-            author={post.author} 
-            clicked={() => this.postClickedHandler(post.id)}/>;
+            return (
+                <Link key={post.id} to={'/' + post.id}>
+                    <Post 
+                    title={post.title} 
+                    author={post.author} 
+                    clicked={() => this.postClickedHandler(post.id)}/>
+                </Link>
+            )
         });
     }
 
