@@ -6,7 +6,7 @@ const post = (props) => (
     <article className="Post" onClick={props.clicked}>
         <h3 className="text-capitalize">{props.title}</h3>
         <div className="Info">
-            <div className="Author">Author</div>
+            <div className="Author">{props.author}</div>
         </div>
     </article>
 );

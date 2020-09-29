@@ -41,7 +41,7 @@ class FullPost extends Component {
         if (this.props.id && this.state.loadedPost) {
             post = (
                 <div className="FullPost">
-                    <h1>{this.state.loadedPost.title}</h1>
+                    <h2 className="text-capitalize">{this.state.loadedPost.title}</h2>
                     <p>{this.state.loadedPost.body}</p>
                     <div className="Edit">
                         <button onClick={this.deletePostHandler} className="Delete">Delete</button>

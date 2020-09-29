@@ -34,7 +34,7 @@ class Blog extends Component {
     postClickedHandler = (id) => {
         this.setState({
             selectedPostId: id
-        })
+        });
     }
 
     checkPost = (posts) => {
