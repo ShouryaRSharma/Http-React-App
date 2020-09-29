@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
+
+import axios from '../../axios';
 
 import Post from '../../components/Post/Post';
 import FullPost from '../../components/FullPost/FullPost';
 import NewPost from '../../components/NewPost/NewPost';
-import './Blog.css';
+import Nav from '../Navbar/Navbar';
+
+import './Blog.scss';
 
 class Blog extends Component {
     constructor() {
@@ -48,7 +52,20 @@ class Blog extends Component {
         
         return (
             <div>
-                <section className="Post-heading">
+                <header className="toolbar">
+                    <Nav />
+                    <nav className="main-navigation">
+                        <ul class="nav-items">
+                            <li className="nav-item">
+                                <a className="nav-link" href="/">Home</a>
+                            </li>
+                            <li>
+                                <a className="nav-link" href="/new-post">Post</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </header>
+                <section className="Post-heading mt-5">
                     <h2 className="mx-2 my-1">Posts</h2>
                 </section>
                 <section className="Posts">
