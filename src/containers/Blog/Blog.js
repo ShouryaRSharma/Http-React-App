@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
-
-import axios from '../../axios';
-
-import Post from '../../components/Post/Post';
-import FullPost from '../../components/FullPost/FullPost';
-import NewPost from '../../components/NewPost/NewPost';
+// import FullPost from './FullPost/FullPost';
+// import NewPost from './NewPost/NewPost';
 import Nav from '../Navbar/Navbar';
+import Posts from './Posts/Posts';
+import { Route } from 'react-router-dom';
 
 import './Blog.scss';
 
@@ -19,37 +16,7 @@ class Blog extends Component {
         })
     }
 
-    componentDidMount () {
-        axios.get('/posts').then(response => {
-            const posts = response.data.slice(0, 6);
-            const updatedPosts = posts.map(post => {
-                return {
-                    ...post, 
-                    author: 'Max'
-                }
-            })
-            this.setState({
-                posts: updatedPosts
-            });
-            console.log("Component Did Mount");
-        });
-    }
-
-    postClickedHandler = (id) => {
-        this.setState({
-            selectedPostId: id
-        });
-    }
-
-    checkPost = (posts) => {
-        return !posts ? null : posts.map(post => {
-            return <Post key={post.id} title={post.title} author={post.author} clicked={() => this.postClickedHandler(post.id)}/>;
-        });
-    }
-    
     render () {
-        const posts = this.state.posts;
-        
         return (
             <div>
                 <header className="toolbar">
@@ -65,18 +32,17 @@ class Blog extends Component {
                         </ul>
                     </nav>
                 </header>
-                <section className="Post-heading mt-5">
+                <Route path="/" exact render={() => <h1>Home</h1>}/>
+                {/* <section className="Post-heading mt-5">
                     <h2 className="mx-2 my-1">Posts</h2>
-                </section>
-                <section className="Posts">
-                    {this.checkPost(posts)}
-                </section>
-                <section>
+                </section> */}
+                {/* <Posts /> */}
+                {/* <section>
                     <FullPost id={this.state.selectedPostId}/>
                 </section>
                 <section>
                     <NewPost />
-                </section>
+                </section> */}
             </div>
         );
     }
