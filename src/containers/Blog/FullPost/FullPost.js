@@ -11,10 +11,11 @@ class FullPost extends Component {
         })
     }
 
-    componentDidUpdate() {
-        if (this.props.id) {
+    componentDidMount() {
+        console.log(this.props);
+        if (this.props.match.params.id) {
             if (!this.state.loadedPost || (this.state.loadedPost && this.state.loadedPost.id !== this.props.id)) {
-                axios.get('/posts/' + this.props.id).then(
+                axios.get('/posts/' + this.props.match.params.id).then(
                     response => {
                         this.setState({
                             loadedPost: response.data
@@ -34,11 +35,11 @@ class FullPost extends Component {
     render () {
         let post = <div className="FullPost"><p>Please select a Post!</p></div>;
 
-        if(this.props.id) {
+        if(this.props.match.params.id) {
             post = <div className="FullPost"><p>Loading...</p></div>;
         }
 
-        if (this.props.id && this.state.loadedPost) {
+        if (this.props.match.params.id && this.state.loadedPost) {
             post = (
                 <div className="FullPost">
                     <h2 className="text-capitalize">{this.state.loadedPost.title}</h2>
