@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import axios from '../../../axios';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 
 import Post from '../../../components/Post/Post';
+import FullPost from '../FullPost/FullPost';
 
 class Posts extends Component {
     constructor() {
@@ -29,16 +30,18 @@ class Posts extends Component {
         });
     }
 
+
     postClickedHandler = (id) => {
         this.setState({
             selectedPostId: id
         });
     }
 
+
     checkPost = (posts) => {
         return !posts ? null : posts.map(post => {
             return (
-                <Link key={post.id} to={'/' + post.id}>
+                <Link key={post.id} to={'/posts/' + post.id}>
                     <Post 
                     title={post.title} 
                     author={post.author} 
@@ -53,12 +56,14 @@ class Posts extends Component {
 
         return (
             <Fragment>
+                
                 <section className="Post-heading">
                         <h2 className="mx-2 my-1">Posts</h2>
                 </section>
                 <section className="Posts">
                     {this.checkPost(posts)}
                 </section>
+                <Route path="/posts/:id" exact component={FullPost} />
             </Fragment>
         );
     }
