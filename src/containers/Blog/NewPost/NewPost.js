@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 import './NewPost.css';
 
@@ -7,7 +8,9 @@ class NewPost extends Component {
     state = {
         title: '',
         content: '',
-        author: 'Max'
+        author: 'Max',
+        submitted: false,
+
     }
 
     
@@ -19,12 +22,20 @@ class NewPost extends Component {
         });
         axios.post('/posts', post).then(response => {
             console.log(response);
-        })
+            this.setState({
+                submitted: true
+            });
+        });
     }
 
     render () {
+        let redirect = null;
+        if (this.state.submitted) {
+            redirect = <Redirect to="/posts" />
+        }
         return (
             <div className="NewPost">
+                {redirect}
                 <h1>Add a Post</h1>
                 <label className="form-label">Title</label>
                 <input type="text" className="form-control" value={this.state.title} onChange={(event) => this.setState({title: event.target.value})} />
@@ -35,7 +46,7 @@ class NewPost extends Component {
                     <option value="Max">Max</option>
                     <option value="Manu">Manu</option>
                 </select>
-                <button onClick={this.postDataHandler} type="submit" className="btn btn-dark mt-3 mb-2">Add Post</button>
+                <button onClick={this.postDataHandler} type="submit" className="btn btn-dark mt-3 mb-2" >Add Post</button>
             </div>
         );
     }
