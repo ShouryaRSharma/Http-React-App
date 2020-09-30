@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import NewPost from './NewPost/NewPost';
 import Nav from '../Navbar/Navbar';
 import Posts from './Posts/Posts';
+import Four from '../../components/ErrorPages/404';
 import { Route, NavLink, Switch } from 'react-router-dom';
 
 import './Blog.scss';
@@ -32,9 +33,10 @@ class Blog extends Component {
                 </header>
                 
                 <Switch>
-                    {/* {this.state.auth ? <Route path="/new-post" exact component={NewPost}/> : null } */}
-                    <Route path="/new-post" exact component={NewPost}/> 
-                    <Route path="/" component={Posts}/>
+                    {this.state.auth ? <Route path="/new-post" exact component={NewPost}/> : null }
+                    {/* <Route path="/new-post" exact component={NewPost}/>  */}
+                    <Route path="/posts" component={Posts}/>
+                    <Route render={() => <h1>Not Found</h1>} />
                 </Switch>
             </div>
         );
