@@ -26,7 +26,6 @@ class Posts extends Component {
             this.setState({
                 posts: updatedPosts
             });
-            console.log("Component Did Mount");
         });
     }
 

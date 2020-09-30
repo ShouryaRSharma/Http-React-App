@@ -2,11 +2,17 @@ import React, { Component } from 'react';
 import NewPost from './NewPost/NewPost';
 import Nav from '../Navbar/Navbar';
 import Posts from './Posts/Posts';
-import { Route, NavLink, Switch, Redirect } from 'react-router-dom';
+import { Route, NavLink, Switch } from 'react-router-dom';
 
 import './Blog.scss';
 
 class Blog extends Component {
+    constructor() {
+        super();
+        this.state = ({
+            auth: false,
+        });
+    }
 
     render () {
         return (
@@ -26,7 +32,8 @@ class Blog extends Component {
                 </header>
                 
                 <Switch>
-                    <Route path="/new-post" exact component={NewPost}/>
+                    {/* {this.state.auth ? <Route path="/new-post" exact component={NewPost}/> : null } */}
+                    <Route path="/new-post" exact component={NewPost}/> 
                     <Route path="/" component={Posts}/>
                 </Switch>
             </div>
